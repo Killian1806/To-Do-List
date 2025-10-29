@@ -1,0 +1,340 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+body {
+  background-color: rgb(219, 239, 255);
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 10px;
+  background: linear-gradient(135deg, rgb(135, 227, 255), rgb(100, 200, 255));
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+h1 {
+  color: rgb(0, 18, 180);
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.user-picto {
+  position: absolute;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  background: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.user-picto:hover {
+  transform: scale(1.1);
+}
+
+.user-picto::before {
+  content: "👤";
+  font-size: 24px;
+}
+
+.todo_container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.input_grp {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 30px;
+}
+
+.newTask {
+  background: white;
+  border-radius: 25px;
+  padding: 12px 20px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border: 2px solid transparent;
+  font-size: 1rem;
+  transition: all 0.3s;
+}
+
+.newTask:focus {
+  outline: none;
+  border-color: rgb(228, 132, 148);
+}
+
+.addNewTask {
+  color: white;
+  background: linear-gradient(135deg, rgb(228, 132, 148), rgb(200, 100, 120));
+  padding: 12px 24px;
+  border: none;
+  border-radius: 25px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.3s;
+  box-shadow: 0 2px 8px rgba(228, 132, 148, 0.3);
+}
+
+.addNewTask:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(228, 132, 148, 0.4);
+}
+
+.addNewTask:active {
+  transform: translateY(0);
+}
+
+.taskList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.taskList li {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background: white;
+  border-radius: 12px;
+  margin-top: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  padding: 15px 20px;
+  transition: all 0.3s;
+  animation: slideIn 0.3s ease-out;
+}
+
+
+
+.taskList li:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  transform: translateY(-2px);
+}
+
+.taskList li.completed {
+  opacity: 0.7;
+  background: #f5f5f5;
+}
+
+.card-checkbox {
+  width: 22px;
+  height: 22px;
+  cursor: pointer;
+  accent-color: rgb(228, 132, 148);
+}
+
+.taskList p {
+  flex-grow: 1;
+  font-size: 1.1rem;
+  color: #333;
+  word-break: break-word;
+  transition: all 0.3s;
+}
+
+.taskList li.completed p {
+  text-decoration: line-through;
+  color: #999;
+}
+
+.card-delete {
+  background: linear-gradient(135deg, #ea5252, #d43f3f);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 14px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: all 0.3s;
+  box-shadow: 0 2px 5px rgba(234, 82, 82, 0.3);
+}
+
+.card-delete:hover {
+  background: linear-gradient(135deg, #d43f3f, #c03030);
+  transform: scale(1.1);
+}
+
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  color: #999;
+}
+
+.empty-state::before {
+  content: "📝";
+  display: block;
+  font-size: 4rem;
+  margin-bottom: 20px;
+}
+
+.empty-state p {
+  font-size: 1.2rem;
+}
+
+
+
+.taskList li button {
+  background: none;
+  background-color: #ea5252;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 0.3rem 0.8rem;
+  cursor: pointer;
+  font-size: 1.3rem;
+}
+
+.taskList li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #eaeaea;
+  border-radius: 7px;
+  margin-bottom: 0.7rem;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+  padding: 0.7rem 1rem;
+}
+
+.login {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.3s;
+}
+
+.login-content {
+  background: white;
+  border-radius: 20px;
+  padding: 40px;
+  max-width: 400px;
+  width: 90%;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  animation: slideUp 0.3s;
+}
+
+.login-content h2 {
+  color: rgb(0, 18, 180);
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.form-grp {
+  margin-bottom: 20px;
+}
+
+.form-grp label {
+  display: block;
+  margin-bottom: 8px;
+  color: #333;
+  font-weight: 500;
+}
+
+.form-grp input {
+  width: 100%;
+  padding: 12px 15px;
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+.form-grp input:focus {
+  outline: none;
+  border-color: rgb(228, 132, 148);
+}
+
+.buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 30px;
+}
+
+.buttons button {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.primary-btn {
+  background: linear-gradient(135deg, rgb(228, 132, 148), rgb(200, 100, 120));
+  color: white;
+}
+
+.primary-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(228, 132, 148, 0.4);
+}
+
+.scd-btn {
+  background: #f0f0f0;
+  color: #666;
+}
+
+.scd-btn:hover {
+  background: #e0e0e0;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  color: #666;
+  font-size: 0.9rem;
+}
