@@ -19,5 +19,10 @@ export default class App {
       // Affiche la liste mise à jour des tâches dans l'interface
       Interface.displayTasks(this.tasks);
     });
+
+    Interface.onDelete = (id) => {
+      this.tasks = this.tasks.filter((task) => task.id != id);
+      Interface.displayTasks(this.tasks)
+    }
   }
 }

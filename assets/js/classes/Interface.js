@@ -1,19 +1,16 @@
 export default class Interface {
   static handlerCreateTask(handler) {
-    const newTaskName = document.getElementById("newTaskName");
-    const newTaskType = document.getElementById("newTaskType");
-    const newTaskDate = document.getElementById("newTaskDate");
-    const newTaskValidate = document.getElementById("newTaskValidate");
+    const nameInput = document.getElementById("newTaskName");
+    const typeInput = document.getElementById("newTaskType");
+    const dateInput = document.getElementById("newTaskDate");
+    const btn = document.getElementById("newTaskValidate");
 
-    newTaskValidate.addEventListener("click", () => {
-      const data = {
-        name: newTaskName.value,
-        type: newTaskType.value,
-        opt: {
-          date: newTaskDate.value,
-        },
-      };
-      handler(data);
+    btn.addEventListener("click", () => {
+      handler({
+        name: nameInput.value,
+        type: typeInput.value,
+        opt: { date: dateInput.value },
+      });
     });
   }
 
@@ -24,6 +21,7 @@ export default class Interface {
     tasks.forEach((task) => {
       const li = document.createElement("li");
       li.classList.add("task-card");
+      li.dataset.id = task.id;
 
       task.checkbox.classList.add("card-checkbox");
       li.appendChild(task.checkbox);
@@ -32,7 +30,7 @@ export default class Interface {
       p.textContent = task.name;
       li.appendChild(p);
 
-      // Si la tâche est un Appoitment, on affiche la date
+      // Affichage de la date si présente
       if (task.date) {
         const smallDate = document.createElement("small");
         smallDate.textContent = "📅 " + task.date;
@@ -43,8 +41,11 @@ export default class Interface {
       const delBtn = document.createElement("button");
       delBtn.textContent = "×";
       delBtn.classList.add("card-delete");
+      delBtn.addEventListener("click", () => {
+        Interface.onDelete(task.id);
+      });
       li.appendChild(delBtn);
-      
+
       listHTML.appendChild(li);
     });
   }
