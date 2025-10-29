@@ -151,8 +151,6 @@ h1 {
   animation: slideIn 0.3s ease-out;
 }
 
-
-
 .taskList li:hover {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
   transform: translateY(-2px);
@@ -168,6 +166,12 @@ h1 {
   height: 22px;
   cursor: pointer;
   accent-color: rgb(228, 132, 148);
+}
+
+.card-date {
+  font-size: 0.8rem;
+  color: #666;
+  margin-left: auto;
 }
 
 .taskList p {
@@ -216,8 +220,6 @@ h1 {
 .empty-state p {
   font-size: 1.2rem;
 }
-
-
 
 .taskList li button {
   background: none;

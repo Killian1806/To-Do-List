@@ -1,24 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body style="background-color: white">
-    <ul id="taskList"></ul>
-    <input id="newTaskName" type="text" />
-    <input id="newTaskDate" type="date" />
-    <select name="" id="newTaskType">
-      <option value="simple">Simple</option>
-      <option value="appoitment">Appoitment</option>
-    </select>
-    <button id="newTaskValidate">Valider</button>
-    <script type="module" src="assets/js/script.js"></script>
-    <style>
-      li {
-        display: flex;
-      }
-    </style>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css">
+  <title>Document</title>
+</head>
+
+<body>
+  <header>
+    <h1>Todo List</h1>
+    <div class="user-picto"></div>
+  </header>
+
+  <div class="todo_container">
+    <div class="input_grp">
+      <input class="newTask" id="newTaskName" type="text" placeholder="Nouvelle tâche..." />
+      <input class="newTask" id="newTaskDate" type="date" />
+      <select class="newTask" id="newTaskType">
+        <option value="simple">Simple</option>
+        <option value="appoitment">Appointment</option>
+      </select>
+      <button class="addNewTask" id="newTaskValidate">Valider</button>
+    </div>
+
+    <ul class="taskList" id="taskList"></ul>
+  </div>
+
+  <script type="module" src="assets/js/script.js"></script>
+</body>
+
 </html>

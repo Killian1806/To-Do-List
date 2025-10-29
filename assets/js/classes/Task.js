@@ -23,5 +23,8 @@ export default class Task {
   }
 
   // Méthode qui inverse l'état checked de la tâche
-  toggle = () => (this.checked = !this.checked);
+  toggle = () => {
+    this.checked = !this.checked;
+    this.checkbox.parentElement.classList.toggle("completed", this.checked);
+  };
 }
