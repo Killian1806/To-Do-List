@@ -4,6 +4,7 @@ export default class Appoitment extends Task {
 
   constructor(data) {
     super(data);
+    // Récuperation de la date
     this.date = data.opt.date;
   }
 }

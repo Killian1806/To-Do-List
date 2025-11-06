@@ -1,24 +1,24 @@
 export default class Task {
   static idCount = 1;
 
-  // Propriétés d'instance
+  // Propriétés
   id;
   name;
   checked = false;
   checkbox;
 
   constructor(data) {
-    // Attribue un ID unique à cette tâche
+    // Attribution d'un id
     this.id = Task.idCount;
-    // Incrémente le compteur pour la prochaine tâche
+    // Incrémentation du compteur
     Task.idCount++;
     this.name = data.name;
 
-    // Crée un élément HTML input de type checkbox
+    // Création d'un élément HTML (input)
     const checkbox = document.createElement("input");
     checkbox.type = "checkbox";
     this.checkbox = checkbox;
-    // Appelle la méthode toggle() quand on clique dessus
+    // Appelle de la méthode toggle
     checkbox.addEventListener("click", () => this.toggle());
   }
 

@@ -10,13 +10,13 @@ export default class App {
   constructor() {
     //
     Interface.handlerCreateTask((data) => {
-      // Vérifie le type de tâche à créer
+      // Vérification du type de tâches
       if (data.type == "simple") {
         this.tasks.push(new Task(data));
       } else if (data.type == "appoitment") {
         this.tasks.push(new Appoitment(data));
       }
-      // Affiche la liste mise à jour des tâches dans l'interface
+      // Affichage de la liste mise à jour
       Interface.displayTasks(this.tasks);
     });
 
@@ -34,17 +34,17 @@ export default class App {
     const cancelBtn = document.getElementById("cancel");
     const form = document.getElementById("loginForm");
 
-    // Charger l'utilisateur si déjà connecté
+    // Chargement de l'utilisateur s'il est déjà connecté
     const savedUser = localStorage.getItem("user");
     if (savedUser) {
       this.user = JSON.parse(savedUser);
       this.updateUserPicto(picto);
     }
 
-    // Clic sur le pictogramme
+    // Pictogramme cliquable
     picto.addEventListener("click", () => {
       if (this.user) {
-        // Si déjà connecté → confirmation de déconnexion
+        // Si connecté alors demande de déconnexion
         const confirmLogout = confirm(
           `Déconnexion de ${this.user.name} ?`
         );
@@ -52,17 +52,17 @@ export default class App {
           this.logout(picto);
         }
       } else {
-        // Sinon → ouvrir la fenêtre de connexion
+        // Sinon on ouvre la fenêtre de connexion
         loginModal.style.display = "flex";
       }
     });
 
-    // Bouton Annuler → ferme la modale
+    // Bouton annuler qui ferme la fenêtre
     cancelBtn.addEventListener("click", () => {
       loginModal.style.display = "none";
     });
 
-    // Validation du formulaire de connexion
+    // Validation du formulaire
     form.addEventListener("submit", (e) => {
       e.preventDefault();
 
@@ -88,7 +88,7 @@ export default class App {
     this.user = null;
     localStorage.removeItem("user");
 
-    // Restaure l'icône par défaut
+    // Restauration de l'icône de base
     picto.textContent = "";
     picto.removeAttribute("title");
     picto.style.fontSize = "";
